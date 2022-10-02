@@ -19,3 +19,10 @@ C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\obj\Debug\net6.0\refin
 C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\obj\Debug\net6.0\AmtelcoProject.pdb
 C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\obj\Debug\net6.0\AmtelcoProject.genruntimeconfig.cache
 C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\obj\Debug\net6.0\ref\AmtelcoProject.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\obj\Debug\net6.0\AmtelcoProject.csproj.CopyComplete
