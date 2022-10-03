@@ -34,16 +34,30 @@ namespace AmtelcoProject.Controllers
 
         [HttpGet]
         [Route("getAllAttributes")]
-        public IEnumerable<Attributes> getAllAttributes()
+        public IEnumerable<Attributes> getAllAttributes([FromHeader] Guid token)
         {
-            return attributeDBO.getAllAttributes();
+            if (validation.getValidateToken(token))
+            {
+                return attributeDBO.getAllAttributes();
+            }
+            else
+            {
+                return new List<Attributes>();
+            }
         }
 
         [HttpPost]
         [Route("createAttribute")]
-        public string createAttribute(string name)
+        public string createAttribute([FromHeader] Guid token, string name)
         {
-            return attributeDBO.getCreateAttribute(name);
+            if (validation.getValidateToken(token))
+            {
+                return attributeDBO.getCreateAttribute(name);
+            }
+            else
+            {
+                return "Invalid Token";
+            }
         }
     }
     

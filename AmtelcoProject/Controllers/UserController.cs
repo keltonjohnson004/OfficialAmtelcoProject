@@ -47,16 +47,16 @@ namespace AmtelcoProject.Controllers
 
         [HttpGet]
         [Route("getAllUsers")]
-        public IEnumerable<Users> Get()
+        public IEnumerable<Users> GetAllUsers([FromHeader] Guid token)
         {
-            return usersDBO.getAllUsers();
-        }
-
-        [HttpGet]
-        [Route("validateToken")]
-        public bool isTokenValid(Guid token)
-        {
-            return validation.getValidateToken(token);
+            if (validation.getValidateToken(token))
+            {
+                return usersDBO.getAllUsers();
+            }
+            else
+            {
+                return new List<Users>();
+            }
         }
 
         [HttpPost]

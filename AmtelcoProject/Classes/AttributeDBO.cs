@@ -94,22 +94,62 @@ namespace AmtelcoProject.Classes
 
         private string createAttribute(string name)
         {
+            if (!doesAttributeExist(name))
+            {
+                string connectionString = _configuration.GetConnectionString("Amtelco");
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string queryStatement = "INSERT INTO Attributes VALUES (@AttributeName);";
+
+                    using (SqlCommand cmd = new SqlCommand(queryStatement, con))
+                    {
+                        con.Open();
+                        cmd.Parameters.AddWithValue("@AttributeName", name);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+
+                    }
+                }
+                return "Attribute Created";
+            }
+            else
+            {
+                return "Attribute with given name already exists";
+            }
+        }
+
+        private bool doesAttributeExist(string name)
+        {
             string connectionString = _configuration.GetConnectionString("Amtelco");
+            int attributeExists = -1;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string queryStatement = "INSERT INTO Attributes VALUES (@AttributeName);";
+                string queryStatement = "SELECT * FROM Attributes WHERE AttributeName = @AttributeName;";
 
                 using (SqlCommand cmd = new SqlCommand(queryStatement, con))
                 {
                     con.Open();
                     cmd.Parameters.AddWithValue("@AttributeName", name);
-                    cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        attributeExists = 1;
+                    }
                     con.Close();
-                    
+
 
                 }
             }
-            return "Attribute Created";
+            if(attributeExists==-1)
+            {
+                return false;
+            }
+            else
+            {
+                return true; 
+            }
+
         }
     }
 }

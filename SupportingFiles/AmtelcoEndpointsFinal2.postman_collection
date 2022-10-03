@@ -13,7 +13,13 @@
 					"name": "Create Project",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "399b9ff2-2a19-43b8-9dd4-a21637ca9cfa",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "https://localhost:7254/project/createProject?name=test",
 							"protocol": "https",
@@ -39,7 +45,13 @@
 					"name": "Create Attribute",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "399b9ff2-2a19-43b8-9dd4-a21637ca9cfa",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "https://localhost:7254/attribute/createAttribute?name=Testing",
 							"protocol": "https",
@@ -95,7 +107,13 @@
 					"name": "Get All Projects",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "399b9ff2-2a19-43b8-9dd4-a21637ca9cfa",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "https://localhost:7254/project/getAllProjects",
 							"protocol": "https",
@@ -115,7 +133,13 @@
 					"name": "Get All Attributes",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "399b9ff2-2a19-43b8-9dd4-a21637ca9cfa",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "https://localhost:7254/attribute/getAllAttributes",
 							"protocol": "https",
@@ -135,7 +159,13 @@
 					"name": "Get All Users",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "399b9ff2-2a19-43b8-9dd4-a21637ca9cfa",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "https://localhost:7254/user/getAllUsers",
 							"protocol": "https",
@@ -192,7 +222,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"value": "e1883657-3f98-44bc-94f1-c536de699245",
 						"type": "text"
 					}
 				],
@@ -218,13 +248,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"value": "c8d88fa1-ca00-4452-ae33-c7bf422b9071",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"noteText\": \"testing createNote call\",\r\n    \"noteId\": \"20\",\r\n    \"projectId\": \"1\",\r\n    \"attributes\" : [\r\n       1,2,3 \r\n    ]\r\n}",
+					"raw": "{\r\n    \"noteText\": \"testing createNote call\",\r\n    \"noteId\": \"25\",\r\n    \"projectId\": \"1\",\r\n    \"attributes\" : [\r\n       1,2,3 \r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -253,7 +283,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"value": "c8d88fa1-ca00-4452-ae33-c7bf422b9071",
 						"type": "text"
 					}
 				],
@@ -267,7 +297,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:7254/note/DeleteNote?noteId=2",
+					"raw": "https://localhost:7254/note/DeleteNote?noteId=3",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -280,7 +310,7 @@
 					"query": [
 						{
 							"key": "noteId",
-							"value": "2"
+							"value": "3"
 						}
 					]
 				}
@@ -294,13 +324,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"value": "c8d88fa1-ca00-4452-ae33-c7bf422b9071",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"noteId\":\"3\",\r\n    \"noteText\": \"Updating Note Again\"\r\n}",
+					"raw": "{\r\n    \"noteId\":\"4\",\r\n    \"noteText\": \"Updating Note Again\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -332,7 +362,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"value": "c8d88fa1-ca00-4452-ae33-c7bf422b9071",
 						"type": "text"
 					}
 				],
@@ -370,7 +400,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"value": "c8d88fa1-ca00-4452-ae33-c7bf422b9071",
 						"type": "text"
 					}
 				],
@@ -400,7 +430,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"value": "c8d88fa1-ca00-4452-ae33-c7bf422b9071",
 						"type": "text"
 					}
 				],

@@ -63,21 +63,28 @@ namespace AmtelcoProject.Classes
 
         private string createUser(string username, string password)
         {
-            string connectionString = _configuration.GetConnectionString("Amtelco");
-            using (SqlConnection con = new SqlConnection(connectionString))
+            if (!doesUserAlreadyExist(username))
             {
-                string queryStatement = "INSERT INTO Users VALUES (@UserName, @PassWord, GETDATE(), GETDATE());";
-
-                using (SqlCommand cmd = new SqlCommand(queryStatement, con))
+                string connectionString = _configuration.GetConnectionString("Amtelco");
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    con.Open();
-                    cmd.Parameters.AddWithValue("UserName", username);
-                    cmd.Parameters.AddWithValue("PassWord", password);
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                    string queryStatement = "INSERT INTO Users VALUES (@UserName, @PassWord, GETDATE(), GETDATE());";
+
+                    using (SqlCommand cmd = new SqlCommand(queryStatement, con))
+                    {
+                        con.Open();
+                        cmd.Parameters.AddWithValue("@UserName", username);
+                        cmd.Parameters.AddWithValue("@PassWord", password);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
                 }
+                return "User Created";
             }
-            return "User Created";
+            else
+            {
+                return "User with given username already exists";
+            }
         }
 
         private bool getSingleUser(string username, string password)
@@ -93,8 +100,8 @@ namespace AmtelcoProject.Classes
                 using (SqlCommand cmd = new SqlCommand(queryStatement, con))
                 {
                     con.Open();
-                    cmd.Parameters.AddWithValue("username", username);
-                    cmd.Parameters.AddWithValue("password", password);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     if(reader.Read())
@@ -132,13 +139,44 @@ namespace AmtelcoProject.Classes
                 using (SqlCommand cmd = new SqlCommand(updateQueryStatement, con))
                 {
                     con.Open();
-                    cmd.Parameters.AddWithValue("UserName", username);
+                    cmd.Parameters.AddWithValue("@UserName", username);
                     cmd.ExecuteNonQuery();
 
 
                     con.Close();
 
                 }
+            }
+        }
+
+        private bool doesUserAlreadyExist(string username)
+        {
+            string connectionString = _configuration.GetConnectionString("Amtelco");
+            int doesExist = -1;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string updateQueryStatement = "SELECT * FROM Users WHERE UserName = @Username";
+                using (SqlCommand cmd = new SqlCommand(updateQueryStatement, con))
+                {
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@UserName", username);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        doesExist = 1;
+                    }
+
+                    con.Close();
+
+                }
+            }
+            if (doesExist == -1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

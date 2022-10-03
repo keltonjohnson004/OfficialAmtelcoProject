@@ -35,16 +35,30 @@ namespace AmtelcoProject.Controllers
 
         [HttpGet]
         [Route("getAllProjects")]
-        public IEnumerable<Projects> getAllProjects()
+        public IEnumerable<Projects> getAllProjects([FromHeader] Guid token)
         {
-            return projectDBO.getAllProjects();
+            if (validation.getValidateToken(token))
+            {
+                return projectDBO.getAllProjects();
+            }
+            else
+            {
+                return new List<Projects>();
+            }
         }
 
         [HttpPost]
         [Route("createProject")]
-        public string createProject(string name)
+        public string createProject([FromHeader] Guid token, string name)
         {
-            return projectDBO.getCreateProject(name);
+            if (validation.getValidateToken(token))
+            {
+                return projectDBO.getCreateProject(name);
+            }
+            else
+            {
+                return "Invalid Token";
+            }
         }
     }
 }

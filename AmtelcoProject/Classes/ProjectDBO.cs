@@ -92,23 +92,63 @@ namespace AmtelcoProject.Classes
 
         private string createProject(string name)
         {
+            if (!doesProjectExist(name))
+            {
+                string connectionString = _configuration.GetConnectionString("Amtelco");
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string queryStatement = "INSERT INTO Projects VALUES (@ProjectName);";
+
+                    using (SqlCommand cmd = new SqlCommand(queryStatement, con))
+                    {
+                        con.Open();
+                        cmd.Parameters.AddWithValue("@ProjectName", name);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+
+                    }
+                }
+                return "Project Created";
+            }
+            else
+            {
+                return "Project with given name already exists";
+            }
+        }
+
+        private bool doesProjectExist(string name)
+        {
             string connectionString = _configuration.GetConnectionString("Amtelco");
-           
+            int doesExist = -1;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string queryStatement = "INSERT INTO Projects VALUES (@ProjectName);";
+                string queryStatement = "SELECT * FROM Projects WHERE ProjectName = @ProjectName;";
 
                 using (SqlCommand cmd = new SqlCommand(queryStatement, con))
                 {
                     con.Open();
                     cmd.Parameters.AddWithValue("@ProjectName", name);
-                    cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        doesExist = 1;
+                    }
                     con.Close();
-                   
+
 
                 }
             }
-            return "Project Created";
+            if(doesExist == -1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
         }
     }
 }
