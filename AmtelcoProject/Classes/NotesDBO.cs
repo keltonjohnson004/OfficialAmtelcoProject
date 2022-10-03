@@ -6,6 +6,12 @@ namespace AmtelcoProject.Classes
     public class NotesDBO
     {
 
+        private IConfiguration _configuration;
+        public NotesDBO(IConfiguration iconfig)
+        {
+            _configuration = iconfig;
+        }
+
         public List<Notes> getNotes(SearchBy searchBy)
         {
             return allNotes(searchBy);
@@ -28,7 +34,7 @@ namespace AmtelcoProject.Classes
 
         private List<Notes> allNotes(SearchBy searchBy)
         {
-            string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             List<Notes> notes = new List<Notes>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -119,7 +125,7 @@ namespace AmtelcoProject.Classes
         }
         private string createNote(InsertNote note)
         {
-            string connectionString = "Data Source=DESKTOP-EPEN0RG\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -151,7 +157,6 @@ namespace AmtelcoProject.Classes
                     foreach (int attribute in note.attributes)
                     {
 
-                        //string queryStatement = "INSERT INTO Notes VALUES (" + noteId.ToString() + ", '" + note.noteText + "', " + note.projectID.ToString() + ", " + attribute.ToString() + ");";
                         string attributeQueryStatement = "INSERT INTO NoteToAttribute (NoteID, AttributeID) VALUES(@NoteID, @AttributeID); ";
 
                         using (SqlCommand cmd = new SqlCommand(attributeQueryStatement, con))
@@ -177,7 +182,7 @@ namespace AmtelcoProject.Classes
 
         private string deleteNote(int noteID)
         {
-            string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             int reader;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -216,7 +221,7 @@ namespace AmtelcoProject.Classes
 
         private string updateNote(int noteID, string noteText)
         {
-            string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             int reader;
             using (SqlConnection con = new SqlConnection(connectionString))
             {

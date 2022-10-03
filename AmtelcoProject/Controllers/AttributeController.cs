@@ -10,16 +10,16 @@ namespace AmtelcoProject.Controllers
     {
         AttributeDBO attributeDBO;
         Validation validation;
-
-        public AttributeController()
+ 
+        public AttributeController(IConfiguration iconfig)
         {
-            attributeDBO = new AttributeDBO(); 
-            validation = new Validation();
+            attributeDBO = new AttributeDBO(iconfig); 
+            validation = new Validation(iconfig);
         }
 
 
         [HttpGet]
-        [Route("noteCountByAttribute")]
+        [Route("GetAttributeNoteCounts")]
         public IEnumerable<AttributeNoteCount> noteCountByAttribute([FromHeader] Guid token)
         {
             if (validation.getValidateToken(token))

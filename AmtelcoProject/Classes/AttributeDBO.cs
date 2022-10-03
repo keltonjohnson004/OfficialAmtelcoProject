@@ -1,10 +1,17 @@
 ﻿using AmtelcoProject.Models;
+using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 
 namespace AmtelcoProject.Classes
 {
     public class AttributeDBO
     {
+        private IConfiguration _configuration;
+        public AttributeDBO(IConfiguration iconfig)
+        {
+            _configuration = iconfig;
+        }
+
         public List<AttributeNoteCount> getNoteCountByAttribute()
         {
             return noteCountByAttribute();
@@ -23,7 +30,7 @@ namespace AmtelcoProject.Classes
 
         private List<AttributeNoteCount> noteCountByAttribute()
         {
-            string connectionString = "Data Source=DESKTOP-EPEN0RG\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             List<AttributeNoteCount> ancs = new List<AttributeNoteCount>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -59,7 +66,7 @@ namespace AmtelcoProject.Classes
 
         private List<Attributes> allAttributes()
         {
-            string connectionString = "Data Source=DESKTOP-EPEN0RG\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             List<Attributes> attributes = new List<Attributes>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -87,8 +94,7 @@ namespace AmtelcoProject.Classes
 
         private string createAttribute(string name)
         {
-            string connectionString = "Data Source=DESKTOP-EPEN0RG\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
-           
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string queryStatement = "INSERT INTO Attributes VALUES (@AttributeName);";

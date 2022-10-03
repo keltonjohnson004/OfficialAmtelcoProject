@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "7a5cc804-7c8f-4181-b9a4-d8cda5718740",
+		"name": "Amtelco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13560593"
+	},
+	"item": [
+		{
+			"name": "Extra endpoints (Get all/Create)",
+			"item": [
+				{
+					"name": "Create Project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7254/project/createProject?name=test",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7254",
+							"path": [
+								"project",
+								"createProject"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Attribute",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7254/attribute/createAttribute?name=Testing",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7254",
+							"path": [
+								"attribute",
+								"createAttribute"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Testing"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7254/user/createUser?username=TestCreate&password=Password",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7254",
+							"path": [
+								"user",
+								"createUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "TestCreate"
+								},
+								{
+									"key": "password",
+									"value": "Password"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7254/project/getAllProjects",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7254",
+							"path": [
+								"project",
+								"getAllProjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Attributes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7254/attribute/getAllAttributes",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7254",
+							"path": [
+								"attribute",
+								"getAllAttributes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7254/user/getAllUsers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7254",
+							"path": [
+								"user",
+								"getAllUsers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"keltonjohnson\",\r\n    \"UserPassword\": \"Password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7254/user/Login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7254",
+					"path": [
+						"user",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Logoff",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:7254/user/Logout",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7254",
+					"path": [
+						"user",
+						"Logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Note",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"noteText\": \"testing createNote call\",\r\n    \"noteId\": \"20\",\r\n    \"projectId\": \"1\",\r\n    \"attributes\" : [\r\n       1,2,3 \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7254/note/NewNote",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7254",
+					"path": [
+						"note",
+						"NewNote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Note",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7254/note/DeleteNote?noteId=2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7254",
+					"path": [
+						"note",
+						"DeleteNote"
+					],
+					"query": [
+						{
+							"key": "noteId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Note",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"noteId\":\"3\",\r\n    \"noteText\": \"Updating Note Again\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7254/note/UpdateNote",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7254",
+					"path": [
+						"note",
+						"UpdateNote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search for Notes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"attributeIDs\": [\r\n        1,\r\n        2\r\n    ],\r\n    \"projectID\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7254/note/getNotes",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7254",
+					"path": [
+						"note",
+						"getNotes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Note Count by Project",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://localhost:7254/project/GetProjectNoteCounts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7254",
+					"path": [
+						"project",
+						"GetProjectNoteCounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Note Count By Attribute",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "6c9c1de5-9ec7-4f83-8c80-290d5f62e717",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:7254/attribute/GetAttributeNoteCounts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7254",
+					"path": [
+						"attribute",
+						"GetAttributeNoteCounts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

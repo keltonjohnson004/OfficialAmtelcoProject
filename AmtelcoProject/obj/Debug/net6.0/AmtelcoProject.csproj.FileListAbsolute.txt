@@ -26,3 +26,14 @@ C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runti
 C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\obj\Debug\net6.0\AmtelcoProject.csproj.CopyComplete
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\kelto\source\repos\AmtelcoProject\AmtelcoProject\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll

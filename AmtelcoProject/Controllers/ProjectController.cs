@@ -12,15 +12,15 @@ namespace AmtelcoProject.Controllers
         ProjectDBO projectDBO;
         Validation validation;
 
-        public ProjectController()
+        public ProjectController(IConfiguration iconfig)
         {
-            projectDBO = new ProjectDBO(); ;
-            validation = new Validation();
+            projectDBO = new ProjectDBO(iconfig); ;
+            validation = new Validation(iconfig);
         }
 
 
         [HttpGet]
-        [Route("noteCountByProject")]
+        [Route("GetProjectNoteCounts")]
         public IEnumerable<ProjectNoteCount> noteCountByProject([FromHeader] Guid token)
         {
             if (validation.getValidateToken(token))

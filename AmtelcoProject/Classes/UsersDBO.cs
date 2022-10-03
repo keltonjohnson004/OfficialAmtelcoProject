@@ -8,6 +8,11 @@ namespace AmtelcoProject.Classes
 {
     public class UsersDBO
     {
+        private IConfiguration _configuration;
+        public UsersDBO(IConfiguration iconfig)
+        {
+            _configuration = iconfig;
+        }
 
         public List<Users> getAllUsers()
         {
@@ -26,7 +31,7 @@ namespace AmtelcoProject.Classes
 
         private List<Users> allUsers()
         {
-            string connectionString = "Data Source=DESKTOP-EPEN0RG\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             List<Users> users = new List<Users>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -58,7 +63,7 @@ namespace AmtelcoProject.Classes
 
         private string createUser(string username, string password)
         {
-            string connectionString = "Data Source=DESKTOP-EPEN0RG\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string queryStatement = "INSERT INTO Users VALUES (@UserName, @PassWord, GETDATE(), GETDATE());";
@@ -77,7 +82,7 @@ namespace AmtelcoProject.Classes
 
         private bool getSingleUser(string username, string password)
         {
-            string connectionString = "Data Source=DESKTOP-EPEN0RG\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             bool doesUserExist = false;
             Users user = new Users();
 
@@ -117,7 +122,7 @@ namespace AmtelcoProject.Classes
 
         private void updateLastLoggedOn(string username)
         {
-            string connectionString = "Data Source=DESKTOP-EPEN0RG\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
 
             Users user = new Users();
 

@@ -6,6 +6,12 @@ namespace AmtelcoProject.Classes
     public class ProjectDBO
     {
 
+        private IConfiguration _configuration;
+        public ProjectDBO(IConfiguration iconfig)
+        {
+            _configuration = iconfig;
+        }
+
         public List<ProjectNoteCount> getNoteCountByProject()
         {
             return noteCountByProject();
@@ -22,7 +28,7 @@ namespace AmtelcoProject.Classes
         }
         private List<ProjectNoteCount> noteCountByProject()
         {
-            string connectionString = "Data Source=DESKTOP-EPEN0RG\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             List<ProjectNoteCount> pncs = new List<ProjectNoteCount>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -58,7 +64,7 @@ namespace AmtelcoProject.Classes
 
         private List<Projects> allProjects()
         {
-            string connectionString = "Data Source=DESKTOP-EPEN0RG\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             List<Projects> projects = new List<Projects>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -86,7 +92,7 @@ namespace AmtelcoProject.Classes
 
         private string createProject(string name)
         {
-            string connectionString = "Data Source=DESKTOP-EPEN0RG\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
            
             using (SqlConnection con = new SqlConnection(connectionString))
             {

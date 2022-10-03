@@ -5,7 +5,11 @@ namespace AmtelcoProject.Classes
 {
     public class Validation
     {
-
+        private IConfiguration _configuration;
+        public Validation(IConfiguration iconfig)
+        {
+            _configuration = iconfig;
+        }
         public bool getValidateToken(Guid token)
         {
             return validateToken(token);
@@ -23,7 +27,7 @@ namespace AmtelcoProject.Classes
 
         private bool validateToken(Guid token)
         {
-            string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -50,7 +54,7 @@ namespace AmtelcoProject.Classes
 
         private Guid newValidationToken()
         {
-            string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
 
             Guid currentToken = Guid.NewGuid();
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -71,7 +75,7 @@ namespace AmtelcoProject.Classes
 
         private bool logOff(Guid token)
         {
-            string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Amtelco;Integrated Security=True;MultipleActiveResultSets=True";
+            string connectionString = _configuration.GetConnectionString("Amtelco");
             int reader;
             using (SqlConnection con = new SqlConnection(connectionString))
             {

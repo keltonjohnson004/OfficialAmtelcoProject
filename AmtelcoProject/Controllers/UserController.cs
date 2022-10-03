@@ -13,10 +13,10 @@ namespace AmtelcoProject.Controllers
         private UsersDBO usersDBO;
         private Validation validation;
 
-        public UserController()
+        public UserController(IConfiguration iconfig)
         {
-            usersDBO = new UsersDBO();
-            validation = new Validation();
+            usersDBO = new UsersDBO(iconfig);
+            validation = new Validation(iconfig);
         }
 
         [HttpGet]
@@ -31,7 +31,7 @@ namespace AmtelcoProject.Controllers
         }
 
         [HttpGet]
-        [Route("Logoff")]
+        [Route("Logout")]
         public string userLogoff([FromHeader] Guid token)
         {
             if (validation.getLogOff(token))

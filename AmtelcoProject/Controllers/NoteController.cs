@@ -13,10 +13,10 @@ namespace AmtelcoProject.Controllers
         private NotesDBO notesDBO;
         private Validation validation;
 
-        public NoteController()
+        public NoteController(IConfiguration iconfig)
         {
-            notesDBO = new NotesDBO();
-            validation = new Validation();
+            notesDBO = new NotesDBO(iconfig);
+            validation = new Validation(iconfig);
         }
         //IEnumerable<Notes>
         [HttpGet]
@@ -37,7 +37,7 @@ namespace AmtelcoProject.Controllers
 
 
         [HttpPost]
-        [Route("createNote")]
+        [Route("NewNote")]
         public string CreateNote([FromHeader] Guid token, [FromBody] InsertNote note)
         {
            if(validation.getValidateToken(token))
