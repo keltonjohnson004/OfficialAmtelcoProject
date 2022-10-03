@@ -1,6 +1,6 @@
 I have included my Postman collection of endpoints I have configured. Included in that collection are a few additional endpoints for creating/viewing users, attributes and projects that I used while testing. The collection should contain default values that I have used for testing but can be changed/removed for further testing. Most endpoints will return a message stating an invalid token if the incorrect token is used or if the call was successful, but their are a few that will just return a List of items (the endpoints that return an array ie, getNotes, GetAttributeNoteCounts, etc.). Just for a quick reference, most information is passed into the endpoint through the body, the only exceptions are the token (which is provided in the header) and the noteID for the deleteNote endpoint.
 
-The SQL query I provided includes the creation of the database tables and some default values for every table, but additional values can be added using endpoints.
+The SQL query I provided includes the creation of the database tables and some default values for every table, but additional values can be added using endpoints. The Query should create everything needed (database, tables, values) and can be run again if wanting to reset all everything to the default values (no edits should need to be made).
 
 If the connection string needs to be changed at all to connect to the database, it can be found in appsettings.json
 
